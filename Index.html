@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alireza | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#home" class="logo" id="site-logo">
+        <img src="images/ali.png" alt="Logo" id="nav-logo-image">
+        <span id="site-logo-text">Alireza</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about">Über mich</a></li>
+          <li><a href="#projects">Projekte</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#languages">Sprachen</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <p class="eyebrow">Portfolio</p>
+          <h1 id="hero-title">Informatikstudent mit Interesse an Webentwicklung und Programmierung.</h1>
+          <p class="hero-text" id="hero-text">
+            Ich suche ein Praktikum oder einen Berufseinstieg, um meine Kenntnisse in realen Projekten weiter auszubauen.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="button button-primary">Projekte ansehen</a>
+            <a href="#contact" class="button button-secondary">Kontakt</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="images/ali.png" alt="Profil" id="hero-profile-image">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <p class="section-label">Über mich</p>
+        <h2>Meine Ausbildung & Karriere.</h2>
+        
+        <div class="about-tabs" id="about-tabs">
+          <div class="about-tab-menu" role="tablist" aria-label="Über mich Bereiche">
+            <button type="button" class="about-tab-button active" data-about-tab="personal" role="tab" aria-selected="true">Persönliche Infos</button>
+            <button type="button" class="about-tab-button" data-about-tab="education" role="tab" aria-selected="false">Ausbildung</button>
+            <button type="button" class="about-tab-button" data-about-tab="career" role="tab" aria-selected="false">BERUFSERFAHRUNG</button>
+          </div>
+          <div class="about-tab-content">
+            <div id="about-personal-container" class="about-tab-panel active" data-about-panel="personal" role="tabpanel"></div>
+            <div id="about-education-container" class="about-tab-panel" data-about-panel="education" role="tabpanel" hidden></div>
+            <div id="about-career-container" class="about-tab-panel" data-about-panel="career" role="tabpanel" hidden></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <p class="section-label">Projekte</p>
+        <h2>Meine Arbeiten.</h2>
+        <div class="projects-grid" id="projects-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <p class="section-label">Skills</p>
+        <h2>Technische Kompetenzen.</h2>
+        <div class="skills-graph" id="skills-graph"></div>
+      </div>
+    </section>
+
+    <section class="section" id="languages">
+      <div class="container narrow">
+        <p class="section-label">Sprachen</p>
+        <h2>Meine Sprachkenntnisse.</h2>
+        <div class="languages-grid" id="languages-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container narrow">
+        <p class="section-label">Kontakt</p>
+        <h2>Mich erreichen.</h2>
+        <p class="section-text" id="contact-intro">
+          Ich freue mich auf Praktikums- und Jobangebote. Kontaktieren Sie mich gerne per E-Mail oder über meine Social-Media-Profile.
+        </p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <h4>E-Mail</h4>
+            <a href="mailto:alirezaesmaeili788@gmail.com" id="contact-email">alirezaesmaeili788@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <h4>Telefon</h4>
+            <a href="tel:+436602859975" id="contact-phone">+43 660 2859975</a>
+          </div>
+          <div class="contact-item">
+            <h4>Adresse</h4>
+            <p id="contact-address">Morelliagasse 1-3/3/7, 1210 Wien, Österreich</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p id="footer-copyright">&copy; 2025 Alireza Esmaeili. Alle Rechte vorbehalten.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="portfolio-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

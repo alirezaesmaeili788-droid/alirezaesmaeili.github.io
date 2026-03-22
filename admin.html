@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <main class="admin-page">
+    <div class="admin-header">
+      <h1>Portfolio Admin</h1>
+      <p>Hier kannst du deine Daten, Skills und Inhalte ändern.</p>
+      <div class="admin-actions-top">
+        <a class="button button-secondary" href="Index.html">Zur Portfolio-Seite</a>
+      </div>
+    </div>
+
+    <form id="admin-form" class="admin-form">
+      <section class="card">
+        <h2>Basisdaten</h2>
+        <div class="grid-2">
+          <label>
+            Name/Logo
+            <input type="text" id="profileName" required>
+          </label>
+          <label>
+            Hero Titel
+            <input type="text" id="heroTitle" required>
+          </label>
+        </div>
+        <label>
+          Hero Text
+          <textarea id="heroText" rows="3" required></textarea>
+        </label>
+        <div class="logo-upload-box">
+          <label>
+            Logo/Profilbild hochladen
+            <input type="file" id="heroImageUpload" accept="image/*">
+          </label>
+          <div class="logo-preview-wrap">
+            <img id="heroImagePreview" alt="Logo Vorschau" class="logo-preview" src="images/ali.png">
+            <button type="button" class="button button-secondary" id="remove-hero-image">Bild entfernen</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Über mich - Ausbildung</h2>
+        <div class="entry-manager">
+          <div class="entry-form">
+            <div class="grid-2">
+              <label>
+                Titel
+                <input type="text" id="educationTitle" placeholder="z. B. Bachelorstudium Informatik">
+              </label>
+              <label>
+                Datum
+                <input type="text" id="educationDate" placeholder="z. B. 09/2025 - heute">
+              </label>
+            </div>
+            <label>
+              Beschreibung
+              <textarea id="educationDescription" rows="3" placeholder="Beschreibung der Ausbildung"></textarea>
+            </label>
+            <button type="button" class="button button-primary" id="add-education-btn">Ausbildung hinzufügen</button>
+          </div>
+          <div id="educationList" class="entry-list"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Über mich - Karriere</h2>
+        <div class="entry-manager">
+          <div class="entry-form">
+            <div class="grid-2">
+              <label>
+                Position/Titel
+                <input type="text" id="careerTitle" placeholder="z. B. Grafikdesigner">
+              </label>
+              <label>
+                Unternehmen
+                <input type="text" id="careerCompany" placeholder="z. B. Igel Apotheke, Wien">
+              </label>
+            </div>
+            <label>
+              Datum
+              <input type="text" id="careerDate" placeholder="z. B. 05/2025 - 11/2025">
+            </label>
+            <label>
+              Beschreibung
+              <textarea id="careerDescription" rows="3" placeholder="Beschreibung der Tätigkeit"></textarea>
+            </label>
+            <button type="button" class="button button-primary" id="add-career-btn">Job hinzufügen</button>
+          </div>
+          <div id="careerList" class="entry-list"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Über mich - Persönliche Infos</h2>
+        <div class="entry-manager">
+          <div class="entry-form">
+            <div class="grid-2">
+              <label>
+                Feld
+                <select id="personalInfoType">
+                  <option value="birthDate">Geburtsdatum</option>
+                  <option value="location">Ort/Stadt</option>
+                  <option value="phoneNumber">Telefonnummer</option>
+                  <option value="email">E-Mail</option>
+                  <option value="maritalStatus">Familienstand</option>
+                  <option value="drivingLicense">Führerschein</option>
+                  <option value="additionalInfo">Zusätzliche Info</option>
+                </select>
+              </label>
+              <label>
+                Wert
+                <input type="text" id="personalInfoValue" placeholder="z. B. 28.03.2003">
+              </label>
+            </div>
+            <button type="button" class="button button-primary" id="add-personal-info-btn">Info hinzufügen</button>
+          </div>
+          <div id="personalInfoList" class="entry-list"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Projekte</h2>
+        <div class="entry-manager">
+          <div class="entry-form">
+            <label>
+              Titel
+              <input type="text" id="projectTitle" placeholder="z. B. Webanwendungen">
+            </label>
+            <label>
+              Beschreibung
+              <textarea id="projectDescription" rows="3" placeholder="Beschreibung des Projekts"></textarea>
+            </label>
+            <label>
+              Tags (Sprachen, mit Komma trennen)
+              <input type="text" id="projectTags" placeholder="z. B. HTML, CSS, JavaScript">
+            </label>
+            <label>
+              Projekt Link
+              <input type="text" id="projectLink" placeholder="z. B. https://github.com/dein-projekt">
+            </label>
+            <div class="logo-upload-box">
+              <label>
+                Projektbild hochladen
+                <input type="file" id="projectImageUpload" accept="image/*">
+              </label>
+              <div class="logo-preview-wrap">
+                <img id="projectImagePreview" alt="Projektbild Vorschau" class="logo-preview project-preview-image" src="">
+                <button type="button" class="button button-secondary" id="remove-project-image">Bild entfernen</button>
+              </div>
+            </div>
+            <button type="button" class="button button-primary" id="add-project-btn">Projekt hinzufügen</button>
+          </div>
+          <div id="projectsList" class="entry-list"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Skills</h2>
+        <div class="skill-manager">
+          <div class="skill-add-form">
+            <label>
+              Skill Name
+              <input type="text" id="skillName" placeholder="z. B. JavaScript">
+            </label>
+            <label>
+              Level (1-5)
+              <div class="skill-rating-slider">
+                <input type="range" id="skillRating" min="1" max="5" value="3">
+                <span id="skillRatingDisplay">3/5</span>
+              </div>
+            </label>
+            <button type="button" class="button button-primary" id="add-skill-btn">Skill hinzufügen</button>
+          </div>
+          <div id="skillsList" class="skills-list"></div>
+        </div>
+        <textarea id="skills" style="display:none;"></textarea>
+      </section>
+
+      <section class="card">
+        <h2>Sprachen</h2>
+        <p class="hint">Eine Zeile = eine Sprache. Format: Sprache | Niveau</p>
+        <textarea id="languages" rows="5" required></textarea>
+      </section>
+
+      <section class="card">
+        <h2>Kontakt</h2>
+        <label>
+          Kontakttext
+          <textarea id="contactIntro" rows="3" required></textarea>
+        </label>
+        <div class="grid-3">
+          <label>
+            E-Mail
+            <input type="email" id="contactEmail" required>
+          </label>
+          <label>
+            Telefon
+            <input type="text" id="contactPhone" required>
+          </label>
+          <label>
+            Stadt (Footer)
+            <input type="text" id="footerCity" required>
+          </label>
+        </div>
+        <label>
+          Adresse
+          <input type="text" id="contactAddress" required>
+        </label>
+      </section>
+
+      <section class="card">
+        <h2>Footer</h2>
+        <div class="grid-2">
+          <label>
+            Voller Name
+            <input type="text" id="footerFullName" required>
+          </label>
+          <label>
+            Geburtsdatum-Text
+            <input type="text" id="footerBirthDate" required>
+          </label>
+        </div>
+        <label>
+          Beschreibung
+          <textarea id="footerDescription" rows="3" required></textarea>
+        </label>
+        <label>
+          Copyright-Jahr
+          <input type="text" id="footerYear" required>
+        </label>
+      </section>
+
+      <div class="bottom-actions">
+        <button type="submit" class="button button-primary">Speichern</button>
+        <button type="button" class="button button-secondary" id="reset-defaults">Auf Standard zurücksetzen</button>
+      </div>
+      <p id="status" class="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <script src="portfolio-data.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
