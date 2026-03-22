@@ -167,15 +167,25 @@ function renderFooter(footer) {
 function renderHeroImage(imageUrl) {
   const imageElement = document.getElementById('hero-profile-image');
   const navLogoImage = document.getElementById('nav-logo-image');
-  const finalImage = imageUrl || 'images/ali.png';
+  const fallbackImage = 'images/ali.png';
+  const normalizedImage = typeof imageUrl === 'string' ? imageUrl.trim().replace(/\\/g, '/') : '';
+  const finalImage = normalizedImage || fallbackImage;
 
   if (!imageElement) {
     return;
   }
 
+  imageElement.onerror = () => {
+    imageElement.onerror = null;
+    imageElement.src = fallbackImage;
+  };
   imageElement.src = finalImage;
 
   if (navLogoImage) {
+    navLogoImage.onerror = () => {
+      navLogoImage.onerror = null;
+      navLogoImage.src = fallbackImage;
+    };
     navLogoImage.src = finalImage;
   }
 }
