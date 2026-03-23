@@ -167,7 +167,7 @@ function renderFooter(footer) {
 function renderHeroImage(imageUrl) {
   const imageElement = document.getElementById('hero-profile-image');
   const navLogoImage = document.getElementById('nav-logo-image');
-  const fallbackImage = 'images/ali.png';
+  const fallbackImage = 'ali.png';
   const normalizedImage = typeof imageUrl === 'string' ? imageUrl.trim().replace(/\\/g, '/') : '';
   const isOversizedDataImage = /^data:image\//i.test(normalizedImage) && normalizedImage.length > 500000;
   const finalImage = !normalizedImage || isOversizedDataImage ? fallbackImage : normalizedImage;
