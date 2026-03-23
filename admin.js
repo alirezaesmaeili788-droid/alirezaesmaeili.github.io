@@ -1,5 +1,5 @@
 const ADMIN_ACCESS_SESSION_KEY = 'adminUnlockedV1';
-const ADMIN_PASSWORD_HASH = '68593fd29ffa7d8821381cef219d5572f3b70a0edb58b7a18c03570969aaf945';
+const ADMIN_PASSWORD_HASH = '300559cc7b065e2fb01703e3e993a49593da8cf6599663c33d6d06d7a62ce42d';
 
 // Globaler Admin-State
 let selectedHeroImage = 'images/ali.png';
