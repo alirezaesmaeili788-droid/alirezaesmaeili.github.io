@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   const form = document.getElementById('admin-form');
   const status = document.getElementById('status');
   const resetButton = document.getElementById('reset-defaults');
+  const exportButton = document.getElementById('export-data');
+  const importButton = document.getElementById('import-data');
+  const importFileInput = document.getElementById('import-data-file');
   const imageInput = document.getElementById('heroImageUpload');
   const removeImageButton = document.getElementById('remove-hero-image');
 
@@ -95,6 +98,46 @@ document.addEventListener('DOMContentLoaded', async () => {
       showStatus(error.message, true);
     }
   });
+
+  if (exportButton) {
+    exportButton.addEventListener('click', () => {
+      try {
+        const data = window.PortfolioStore.getPortfolioData();
+        const now = new Date();
+        const stamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+        downloadJsonFile(data, `portfolio-backup-${stamp}.json`);
+        showStatus('Daten erfolgreich exportiert.');
+      } catch (error) {
+        showStatus('Export fehlgeschlagen.', true);
+      }
+    });
+  }
+
+  if (importButton && importFileInput) {
+    importButton.addEventListener('click', () => {
+      importFileInput.click();
+    });
+
+    importFileInput.addEventListener('change', async (event) => {
+      const file = event.target.files && event.target.files[0];
+      if (!file) {
+        return;
+      }
+
+      try {
+        const text = await file.text();
+        const parsed = JSON.parse(text);
+        const normalized = window.PortfolioStore.savePortfolioData(parsed);
+        fillForm(normalized);
+        imageInput.value = '';
+        showStatus('Daten erfolgreich importiert. Bitte Speichern prüfen.');
+      } catch (error) {
+        showStatus('Import fehlgeschlagen. Bitte gültige JSON-Datei wählen.', true);
+      } finally {
+        importFileInput.value = '';
+      }
+    });
+  }
 
   resetButton.addEventListener('click', () => {
     const defaults = window.PortfolioStore.resetPortfolioData();
@@ -191,6 +234,7 @@ function fillForm(data) {
   setValue('contactEmail', data.contact.email);
   setValue('contactPhone', data.contact.phone);
   setValue('contactAddress', data.contact.address);
+  setValue('contactGithub', data.contact.github || '');
 
   setValue('footerFullName', data.footer.fullName);
   setValue('footerDescription', data.footer.description);
@@ -233,7 +277,8 @@ function collectFormData() {
     contact: {
       email: getValue('contactEmail'),
       phone: getValue('contactPhone'),
-      address: getValue('contactAddress')
+      address: getValue('contactAddress'),
+      github: getValue('contactGithub')
     },
     footer: {
       fullName: getValue('footerFullName'),
@@ -299,6 +344,21 @@ function readFileAsDataUrl(file) {
     reader.onerror = () => reject(new Error('Datei konnte nicht gelesen werden.'));
     reader.readAsDataURL(file);
   });
+}
+
+// JSON-Datei lokal herunterladen (Backup/Transfer)
+function downloadJsonFile(data, fileName) {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  anchor.download = fileName;
+  document.body.appendChild(anchor);
+  anchor.click();
+  document.body.removeChild(anchor);
+
+  URL.revokeObjectURL(url);
 }
 
 // Projekte Manager (Add/Edit/Delete + Bild + Tags + Link)

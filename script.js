@@ -1,11 +1,122 @@
+// Portfolio-Inhalte hier direkt im Code pflegen.
+const portfolioContent = {
+  profileName: 'Alireza Esmaeili',
+  heroImage: 'images/ali.png',
+  heroTitle: 'Ich bin Alireza',
+  heroText: 'Informatikstudent mit hoher Motivation, praktische Erfahrungen zu sammeln und mich kontinuierlich weiterzuentwickeln. Ich arbeite strukturiert, lerne schnell und setze neue Inhalte eigenständig in Projekten um.',
+  about: {
+    education: [
+      {
+        title: 'Aktuelle Ausbildung',
+        date: 'September 2025 - heute',
+        description: 'Bachelorstudium Informatik (dual) an der FH Technikum Wien im 2. Semester. Fokus auf Programmierung, Webentwicklung und Datenbanken.'
+      }
+    ],
+    career: [
+      {
+        title: 'Mitarbeiter Verkauf & Grafik',
+        company: 'MNS Toner & Handel OG, Wien',
+        date: 'April 2025 - April 2026',
+        description: '• Pflege und Aktualisierung von Webinhalten\n• Kundenberatung\n• Visuelles Design mit Adobe'
+      },
+      {
+        title: 'Grafikdesigner & Social Media Marketing',
+        company: 'Igel Apotheke, Wien',
+        date: 'Mai 2025 - November 2025',
+        description: '• Gestaltung von Grafikmaterialien\n• Social Media Content\n• Visuelle Kommunikation'
+      },
+      {
+        title: 'Grafikdesigner',
+        company: 'MakeupKala',
+        date: 'Jänner 2020 - Mai 2021',
+        description: '• Gestaltung von Produktgrafiken\n• Pflege von Website-Inhalten (WordPress)'
+      }
+    ],
+    personalInfo: {
+      birthDate: 'Geb. 14.12.2004',
+      location: 'Wien, Österreich',
+      additionalInfo: '',
+      phoneNumber: '',
+      email: '',
+      maritalStatus: 'Verheiratet',
+      drivingLicense: 'Führerschein: Klasse B'
+    }
+  },
+  projects: [
+    {
+      title: 'StudySpot',
+      description: 'Datenbankgestützte PHP-Webanwendung zur Verwaltung von Lernorten mit Benutzerregistrierung, rollenbasierter Zugriffskontrolle und Formularverarbeitung.',
+      image: 'images/studyspot.png',
+      tags: ['PHP', 'HTML', 'CSS'],
+      link: 'https://github.com/alirezaesmaeili788-droid/StudySpot.git'
+    },
+    {
+      title: 'Aktienverwaltung mit Hashtabelle',
+      description: 'Python-Anwendung zur Verwaltung historischer Aktiendaten mit selbst implementierter Hashtabelle und effizienter Suche.',
+      image: 'images/Aktienverwaltung.png',
+      tags: ['Python'],
+      link: 'https://github.com/alirezaesmaeili788-droid/stock-manager-hashtable.git'
+    },
+    {
+      title: 'Linked List Implementation+',
+      description: 'Implementierung einer verketteten Liste mit Sortierfunktionen und dynamischer Speicherverwaltung.',
+      image: 'images/LinkedLList.png',
+      tags: ['C'],
+      link: 'https://github.com/alirezaesmaeili788-droid/linked-list-implementation-c.git'
+    },
+    {
+      title: 'Interactive Piano',
+      description: 'Browserbasiertes Piano mit Audioausgabe, Tastatursteuerung und JSON-basierter Song-Wiedergabe.',
+      image: 'images/interactive piano.png',
+      tags: ['JavaScript'],
+      link: 'https://github.com/alirezaesmaeili788-droid/interactive-piano-js.git'
+    },
+    {
+      title: 'Memory Game',
+      description: 'Ein kleines Memory-Spiel für den Browser mit zwei Spielern, Punktestand, Spielerwechsel und Hinweis-Funktion.',
+      image: 'images/Memorygame.png',
+      tags: ['JavaScript'],
+      link: 'https://github.com/alirezaesmaeili788-droid/Memory-Game.git'
+    }
+  ],
+  skills: [
+    { name: 'HTML', rating: 4 },
+    { name: 'CSS', rating: 4 },
+    { name: 'JavaScript', rating: 2 },
+    { name: 'PHP', rating: 2 },
+    { name: 'SQL/MySQL', rating: 2 },
+    { name: 'C', rating: 4 },
+    { name: 'C++', rating: 1 },
+    { name: 'C#', rating: 1 },
+    { name: 'Python', rating: 1 },
+    { name: 'Photoshop', rating: 5 },
+    { name: 'Illustrator', rating: 4 },
+    { name: 'Videobearbeitung', rating: 3 },
+    { name: 'MS Office', rating: 4 },
+    { name: 'WordPress', rating: 3 },
+    { name: 'Bootstrap', rating: 4 }
+  ],
+  languages: [
+    { name: 'Farsi', level: 'Muttersprache' },
+    { name: 'Deutsch', level: 'C1 - Fachkundig' },
+    { name: 'Englisch', level: 'B1 - Fortgeschritten' }
+  ],
+  contactIntro: 'Ich freue mich auf Praktikums- und Jobangebote. Kontaktieren Sie mich gerne per E-Mail oder über meine Social-Media-Profile.',
+  contact: {
+    email: 'alirezaesmaeili788@gmail.com',
+    phone: '+43 660 2859975',
+    github: 'github.com/alirezaesmaeili788-droid',
+    address: '1210 Wien, Österreich'
+  },
+  footer: {
+    fullName: 'Alireza Esmaeili',
+    copyrightYear: '2025'
+  }
+};
+
 // Entry point: Daten laden und UI rendern
 document.addEventListener('DOMContentLoaded', () => {
-  if (!window.PortfolioStore) {
-    return;
-  }
-
-  const data = window.PortfolioStore.getPortfolioData();
-  renderPortfolio(data);
+  renderPortfolio(portfolioContent);
   setupSkillAnimation();
 });
 
@@ -109,9 +220,9 @@ function renderSkills(skills) {
 
   container.innerHTML = skills
     .map((skill) => {
-      const rating = window.PortfolioStore.clampRating(skill.rating);
-      const level = window.PortfolioStore.getSkillLevelLabel(rating);
-      const blocks = createSkillBlocksHtml(rating);
+      const rating = clampRating(skill.rating);
+      const level = getSkillLevelLabel(rating);
+      const blocks = createSkillBlocksHtml();
 
       return `
         <div class="skill-bar">
@@ -124,6 +235,39 @@ function renderSkills(skills) {
       `;
     })
     .join('');
+}
+
+function clampRating(value) {
+  const number = Number.parseInt(value, 10);
+  if (Number.isNaN(number)) {
+    return 3;
+  }
+
+  if (number < 1) {
+    return 1;
+  }
+
+  if (number > 5) {
+    return 5;
+  }
+
+  return number;
+}
+
+function getSkillLevelLabel(rating) {
+  if (rating <= 2) {
+    return 'Grundkenntnisse';
+  }
+
+  if (rating === 3) {
+    return 'Mittelstufe';
+  }
+
+  if (rating === 4) {
+    return 'Fortgeschritten';
+  }
+
+  return 'Experte';
 }
 
 // Sprachen rendern
@@ -151,11 +295,34 @@ function renderContact(data) {
 
   const email = data.contact.email;
   const phone = data.contact.phone;
+  const github = data.contact.github;
   const address = data.contact.address;
 
   setLinkTextAndHref('contact-email', email, `mailto:${email}`);
   setLinkTextAndHref('contact-phone', phone, `tel:${phone}`);
+  setLinkTextAndHref('contact-github', github, normalizeGithubLink(github));
   setText('contact-address', address);
+}
+
+function normalizeGithubLink(githubValue) {
+  if (typeof githubValue !== 'string') {
+    return '#';
+  }
+
+  const cleaned = githubValue.trim();
+  if (!cleaned) {
+    return '#';
+  }
+
+  if (/^https?:\/\//i.test(cleaned)) {
+    return cleaned;
+  }
+
+  if (cleaned.startsWith('github.com/')) {
+    return `https://${cleaned}`;
+  }
+
+  return `https://github.com/${cleaned.replace(/^@/, '')}`;
 }
 
 // Footer rendern
@@ -167,10 +334,13 @@ function renderFooter(footer) {
 function renderHeroImage(imageUrl) {
   const imageElement = document.getElementById('hero-profile-image');
   const navLogoImage = document.getElementById('nav-logo-image');
-  const fallbackImage = 'ali.png';
+  const fallbackImage = 'images/ali.png';
   const normalizedImage = typeof imageUrl === 'string' ? imageUrl.trim().replace(/\\/g, '/') : '';
-  const isOversizedDataImage = /^data:image\//i.test(normalizedImage) && normalizedImage.length > 500000;
-  const finalImage = !normalizedImage || isOversizedDataImage ? fallbackImage : normalizedImage;
+  const resolvedImage = normalizedImage && !normalizedImage.includes('/') && !/^https?:\/\//i.test(normalizedImage)
+    ? `images/${normalizedImage}`
+    : normalizedImage;
+  const isOversizedDataImage = /^data:image\//i.test(resolvedImage) && resolvedImage.length > 500000;
+  const finalImage = !resolvedImage || isOversizedDataImage ? fallbackImage : resolvedImage;
 
   if (!imageElement) {
     return;

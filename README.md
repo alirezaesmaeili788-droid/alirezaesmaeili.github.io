@@ -1,47 +1,44 @@
 # Portfolio + Admin
 
-Ein statisches Portfolio mit eigenem Admin-Bereich (Vanilla HTML/CSS/JavaScript).
+Ein statisches Portfolio mit eigener Admin-Seite auf Basis von Vanilla HTML, CSS und JavaScript.
 
 ## Features
-- Portfolio-Inhalte aus `localStorage` rendern
+- Portfolio-Inhalte direkt in `script.js` pflegen
 - Admin Login mit Passwort-Hash
-- Visuelle Manager für:
-  - Projekte (Titel, Beschreibung, Tags, Link, Bild)
-  - Skills
-  - Ausbildung
-  - Berufserfahrung
-  - Persönliche Infos
-- Hero/Logo Upload
+- Manager fuer Projekte, Skills, Ausbildung, Berufserfahrung und persoenliche Infos
+- Hero/Logo Upload im Admin
 - About-Tabs auf der Portfolio-Seite
 
 ## Projektstruktur
-- `Index.html` – Portfolio Seite
-- `style.css` – Portfolio Styles
-- `script.js` – Portfolio Rendering & Interaktion
-- `admin.html` – Admin Oberfläche
-- `admin.css` – Admin Styles
-- `admin.js` – Admin Logik
-- `portfolio-data.js` – Datenmodell + Persistenz (`localStorage`)
-- `images/` – Statische Bilder (Logo, Projektbilder)
+- `Index.html` - Portfolio-Seite
+- `style.css` - Portfolio-Styles
+- `script.js` - Portfolio-Inhalte, Rendering und Interaktion
+- `admin.html` - Admin-Oberflaeche
+- `admin.css` - Admin-Styles
+- `admin.js` - Admin-Logik
+- `portfolio-data.js` - Legacy-Datenmodell mit `localStorage` fuer den Admin-Bereich
+- `images/` - Statische Bilder wie Logo und Projektbilder
 
 ## Lokal starten
 Da es eine statische Seite ist:
-1. `Index.html` im Browser öffnen
-2. `admin.html` öffnen für Bearbeitung
+1. `Index.html` im Browser oeffnen
+2. Inhalte direkt in `script.js` im Block `portfolioContent` bearbeiten
+3. `admin.html` ist optional und beeinflusst die Portfolio-Startseite nicht mehr
 
 ## Admin Zugang
-- Passwort ist in `admin.js` als SHA-256 Hash gespeichert.
-- Bei Bedarf Passwort ändern:
+- Das Passwort ist in `admin.js` als SHA-256-Hash gespeichert.
+- Wenn du es aendern willst:
   1. Neues Passwort hashen
   2. `ADMIN_PASSWORD_HASH` in `admin.js` ersetzen
 
 ## Datenhaltung
 - Storage Key: `portfolioDataV1`
-- Reset auf Standarddaten über Button im Admin
+- Der Admin nutzt weiter `localStorage`
+- Die Portfolio-Startseite liest ihre Inhalte nicht mehr aus `localStorage`
 
-## GitHub Upload (Kurz)
+## GitHub Upload
 1. Repository auf GitHub erstellen
-2. Lokal im Projektordner ausführen:
+2. Lokal im Projektordner ausfuehren:
    - `git init`
    - `git add .`
    - `git commit -m "Initial portfolio version"`
@@ -50,5 +47,5 @@ Da es eine statische Seite ist:
    - `git push -u origin main`
 
 ## Hinweise
-- Große Bilder erhöhen `localStorage`-Größe.
-- Upload-Limit im Admin ist aktuell auf 2.5 MB gesetzt.
+- Grosse Bilder erhoehen weiterhin die `localStorage`-Groesse im Admin
+- Das Upload-Limit im Admin liegt aktuell bei 2.5 MB
